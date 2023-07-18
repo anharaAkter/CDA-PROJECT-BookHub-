@@ -23,14 +23,10 @@ public class BookController {
         return bookService.getBookById(id).orElseThrow();
     }
 
-/*    @PostMapping("/book")
-    public void addBook(@RequestBody  Book book){
-        bookService.addBook(book);
-    }*/
 
     //PostMapping book with category
     @PostMapping("book/{id}")
-    public Book addBookWithCategory(@RequestParam Integer categoryId, @RequestBody Book book) {
+    public Book addBookWithCategory(@RequestParam int categoryId, @RequestBody Book book) {
         return bookService.saveBookWithCategory(categoryId, book);
     }
 }

@@ -37,7 +37,7 @@ public class BookService {
         return bookRepo.findById(id);
     }
 
-    public Book saveBookWithCategory(Integer categoryId, Book book) {
+    public Book saveBookWithCategory(int categoryId, Book book) {
         Category category = categoryRepo.findById(categoryId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid Category ID"));
         book.setCategory(category);
