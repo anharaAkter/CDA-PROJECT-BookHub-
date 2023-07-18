@@ -43,4 +43,9 @@ public class CategoryService {
 
         return existingCategory;
     }
+
+    public void deleteCategory(Integer id) {
+        categoryRepo.findById(id).orElseThrow();
+        categoryRepo.deleteById(id);
+    }
 }

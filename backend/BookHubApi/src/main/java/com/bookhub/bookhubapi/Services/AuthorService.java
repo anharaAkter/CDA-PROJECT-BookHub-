@@ -44,4 +44,10 @@ public class AuthorService {
     public void addAuthor(Author author) {
         authorRepo.save(author);
     }
+
+
+        public void deleteAuthor(Integer id){
+            authorRepo.findById(id).orElseThrow();
+            authorRepo.deleteById(id);
+        }
 }

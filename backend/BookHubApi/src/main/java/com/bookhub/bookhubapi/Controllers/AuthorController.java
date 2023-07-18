@@ -30,4 +30,9 @@ public class AuthorController {
     public Author updateAuthor(@PathVariable("id") Integer id , @RequestBody Author author){
         return authorService.updateAuthor(author,id);
     }
+
+    @DeleteMapping("author/{id}")
+    public void deleteCategory(@PathVariable("id") Integer id){
+        authorService.deleteAuthor(id);
+    }
 }
