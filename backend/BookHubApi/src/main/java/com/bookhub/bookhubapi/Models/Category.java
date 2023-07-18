@@ -11,7 +11,6 @@ public class Category {
     @Id
     private int categoryId;
     private String nameCategory;
-    @OneToMany(mappedBy = "category")
-    private List<Book> books;
+
 
 }
