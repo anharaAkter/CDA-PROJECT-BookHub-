@@ -2,6 +2,8 @@ package com.bookhub.bookhubapi.Services;
 
 import com.bookhub.bookhubapi.Models.Author;
 import com.bookhub.bookhubapi.Repositories.AuthorRepo;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +12,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class AuthorService {
     @Autowired
     AuthorRepo authorRepo;
