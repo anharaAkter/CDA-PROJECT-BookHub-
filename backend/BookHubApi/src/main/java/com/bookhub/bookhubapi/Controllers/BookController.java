@@ -25,8 +25,14 @@ public class BookController {
 
 
     //PostMapping book with category
-    @PostMapping("book/{id}")
+ /*   @PostMapping("book/{id}")
     public Book addBookWithCategory(@RequestParam int categoryId, @RequestBody Book book) {
         return bookService.saveBookWithCategory(categoryId, book);
+    }*/
+
+    @PostMapping("/category/{categoryId}/books")
+    public Book addBook(@PathVariable(value = "categoryId") int categoryId,
+                        @RequestBody Book bookRequest){
+        return bookService.addBook(bookRequest, categoryId);
     }
 }

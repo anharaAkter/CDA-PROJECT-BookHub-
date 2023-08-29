@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 
@@ -37,11 +38,20 @@ public class BookService {
         return bookRepo.findById(id);
     }
 
-    public Book saveBookWithCategory(int categoryId, Book book) {
+/*    public Book saveBookWithCategory(int categoryId, Book book) {
         Category category = categoryRepo.findById(categoryId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid Category ID"));
         book.setCategory(category);
 
+        return bookRepo.save(book);
+    }*/
+
+
+    public Book addBook(Book book, int categoryId) {
+        Category category = categoryRepo.findById(categoryId)
+                .orElseThrow(() -> new NoSuchElementException("Not found category with id = " + categoryId));
+
+        book.setCategory(category);
         return bookRepo.save(book);
     }
 }
