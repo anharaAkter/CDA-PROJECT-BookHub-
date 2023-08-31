@@ -1,6 +1,8 @@
 package com.bookhub.bookhubapi.Controllers;
 
+import com.bookhub.bookhubapi.Models.Author;
 import com.bookhub.bookhubapi.Models.Book;
+import com.bookhub.bookhubapi.Services.AuthorService;
 import com.bookhub.bookhubapi.Services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,9 +11,10 @@ import java.util.List;
 
 @RestController
 public class BookController {
-
     @Autowired
     BookService bookService;
+    @Autowired
+    AuthorService authorService;
     @GetMapping("/books")
     public List<Book> getAllBooks(){
         return bookService.getAllBooks();
@@ -24,11 +27,15 @@ public class BookController {
     }
 
 
-    //PostMapping book with category
- /*   @PostMapping("book/{id}")
-    public Book addBookWithCategory(@RequestParam int categoryId, @RequestBody Book book) {
-        return bookService.saveBookWithCategory(categoryId, book);
-    }*/
+
+    //assign book id to authorid for the related bookq
+    @PutMapping("/{bookId}/author/{authorId}")
+    public Book getAllBookByAuthorId(
+            @PathVariable int bookId,
+            @PathVariable int authorId
+    ){
+        return bookService.getAllBookByAuthorId(bookId, authorId);
+    }
 
     @PostMapping("/category/{categoryId}/books")
     public Book addBook(@PathVariable(value = "categoryId") int categoryId,

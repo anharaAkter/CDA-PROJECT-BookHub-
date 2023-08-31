@@ -1,7 +1,9 @@
 package com.bookhub.bookhubapi.Services;
 
 import com.bookhub.bookhubapi.Models.Author;
+import com.bookhub.bookhubapi.Models.Book;
 import com.bookhub.bookhubapi.Models.Category;
+import com.bookhub.bookhubapi.Repositories.BookRepo;
 import com.bookhub.bookhubapi.Repositories.CategoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

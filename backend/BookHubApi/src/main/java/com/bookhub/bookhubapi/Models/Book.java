@@ -2,13 +2,19 @@ package com.bookhub.bookhubapi.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,8 +33,7 @@ public class Book {
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinTable(name="book_authors",joinColumns=@JoinColumn(name = "book_id"),
     inverseJoinColumns= @JoinColumn(name="author_id"))
-    private List<Author> authors;
-
+    private Set<Author> authors = new HashSet<>();
 
 
 
