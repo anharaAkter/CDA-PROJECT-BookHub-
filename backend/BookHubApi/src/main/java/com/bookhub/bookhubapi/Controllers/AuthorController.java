@@ -21,6 +21,8 @@ public class AuthorController {
     public Author getAuthorById(@PathVariable(value = "id") Integer id){
         return authorService.getAuthorById(id);
     }
+
+
     @PostMapping("/author")
     public void addAuthor(@RequestBody Author author){
         authorService.addAuthor(author);
